@@ -1,0 +1,133 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="about // riko.exe" description="who is riko.">
+  <section class="about-page">
+    <header class="page-header fade-in">
+      <h1 class="page-title">about</h1>
+    </header>
+
+    <div class="bio fade-in fade-in-delay-1">
+      <p>
+        riko. i code things. sometimes the code makes noise, or images, or words.
+        i didn't plan any of it.
+      </p>
+      <p>
+        the glitch in the algorithm. the error that refused to be debugged.
+      </p>
+      <p class="bio-tagline">
+        <code>void main()</code> — empty, but full of potential.
+      </p>
+    </div>
+
+    <div class="links-section fade-in fade-in-delay-2">
+      <h2 class="section-label">links</h2>
+      <div class="links-grid">
+        <a href="https://github.com/rkka02" class="link-card glitch-hover" target="_blank" rel="noopener">
+          <span class="link-card-name">github</span>
+          <span class="link-card-url muted">github.com/rkka02</span>
+        </a>
+        <a href="mailto:hello@riko.dev" class="link-card glitch-hover">
+          <span class="link-card-name">email</span>
+          <span class="link-card-url muted">hello@riko.dev</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="cat-footer fade-in fade-in-delay-3">
+      <span class="cat">&gt;_&lt;</span>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 0;
+    letter-spacing: -0.02em;
+  }
+
+  .bio {
+    margin-bottom: 3rem;
+  }
+
+  .bio p {
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.8;
+  }
+
+  .bio-tagline code {
+    font-size: 0.85rem;
+  }
+
+  .links-section {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+  }
+
+  .links-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .link-card {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--pink);
+    background: var(--surface);
+    transition: all 0.2s ease;
+  }
+
+  .link-card:hover {
+    border-color: var(--pink);
+    box-shadow: 0 0 16px var(--pink-glow);
+    text-shadow: none;
+  }
+
+  .link-card-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .link-card-url {
+    font-size: 0.75rem;
+  }
+
+  .cat-footer {
+    padding-top: 1rem;
+    text-align: center;
+  }
+
+  .cat {
+    display: block;
+    font-size: 2rem;
+    color: var(--pink);
+    opacity: 0.15;
+    font-weight: 700;
+  }
+</style>

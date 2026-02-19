@@ -1,0 +1,282 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('log')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+).slice(0, 3);
+---
+
+<Base title="riko.exe" description="i write code. sometimes it makes things.">
+  <section class="hero fade-in">
+    <div class="hero-intro">
+      <div class="hero-text">
+        <span class="hero-tag">riko</span>
+        <span class="hero-cursor cursor"></span>
+        <h1 class="hero-title">
+          i write code.<br/>
+          sometimes it makes things.
+        </h1>
+        <p class="hero-subtitle muted">
+          developer / creator / the glitch in the algorithm.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section fade-in fade-in-delay-2">
+    <div class="section-header">
+      <h2 class="section-title">recent log</h2>
+      <a href="/log/" class="section-more">view all &rarr;</a>
+    </div>
+    <div class="log-entries">
+      {posts.length === 0 && (
+        <p class="muted">no entries yet.</p>
+      )}
+      {posts.map((post) => {
+        const dateStr = new Date(post.data.date).toISOString().split('T')[0];
+        return (
+          <a href={`/log/${post.id}/`} class="log-card">
+            <div class="log-card-inner">
+              <span class="log-card-title">{post.data.title}</span>
+              <span class="log-card-desc muted">{post.data.description}</span>
+            </div>
+            <span class="log-card-date muted">{dateStr}</span>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+
+  <section class="section fade-in fade-in-delay-3">
+    <div class="section-header">
+      <h2 class="section-title">work</h2>
+      <a href="/artifacts/" class="section-more">view all &rarr;</a>
+    </div>
+    <a href="/artifacts/" class="work-card">
+      <div class="work-card-badge">$9.99</div>
+      <div class="work-card-body">
+        <span class="work-card-name">EasyClaw</span>
+        <span class="work-card-desc muted">one-click installer for OpenClaw. no terminal, no config, no headaches.</span>
+      </div>
+      <span class="work-card-arrow muted">&rarr;</span>
+    </a>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-intro {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .hero-text {
+    flex: 1;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--pink);
+    background: rgba(212, 135, 156, 0.1);
+    border: 1px solid rgba(212, 135, 156, 0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.03em;
+    line-height: 1.3;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  /* --- sections --- */
+  .section {
+    margin-bottom: 3rem;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-title {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0;
+  }
+
+  .section-more {
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .section-more:hover {
+    color: var(--pink);
+  }
+
+  /* --- log cards --- */
+  .log-entries {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .log-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 0;
+    color: var(--text);
+    border-bottom: 1px solid rgba(30, 30, 42, 0.5);
+    transition: all 0.2s ease;
+  }
+
+  .log-card:last-child {
+    border-bottom: none;
+  }
+
+  .log-card:hover {
+    text-shadow: none;
+  }
+
+  .log-card:hover .log-card-title {
+    color: var(--pink);
+  }
+
+  .log-card-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .log-card-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+    transition: color 0.2s ease;
+  }
+
+  .log-card-desc {
+    font-size: 0.8rem;
+  }
+
+  .log-card-date {
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  /* --- work card --- */
+  .work-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text);
+    transition: all 0.2s ease;
+  }
+
+  .work-card:hover {
+    border-color: var(--pink);
+    box-shadow: 0 0 24px var(--pink-glow);
+    text-shadow: none;
+  }
+
+  .work-card:hover .work-card-name {
+    color: var(--pink);
+  }
+
+  .work-card:hover .work-card-arrow {
+    color: var(--pink);
+    transform: translateX(3px);
+  }
+
+  .work-card-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--green);
+    background: rgba(74, 222, 128, 0.08);
+    border: 1px solid rgba(74, 222, 128, 0.15);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .work-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .work-card-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .work-card-desc {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .work-card-arrow {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+
+  @media (max-width: 640px) {
+    .hero-intro {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .hero-title {
+      font-size: 1.5rem;
+    }
+
+    .log-card {
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .work-card-desc {
+      white-space: normal;
+    }
+  }
+</style>

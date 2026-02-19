@@ -1,0 +1,167 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = 'riko.exe', description = 'the code runs at night.' } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/about/', label: 'about' },
+  { href: '/log/', label: 'log' },
+  { href: '/artifacts/', label: 'work' },
+  { href: '/gallery/', label: 'gallery' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-inner container">
+        <a href="/" class="nav-logo glitch-hover" aria-label="home">=^._.^= ∫</a>
+        <div class="nav-links">
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              class:list={['nav-link', 'glitch-hover', { active: currentPath.startsWith(link.href) }]}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </nav>
+
+    <main class="main container">
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <span class="footer-text">
+            <span class="green">&gt;</span> riko.exe v1.0 // the code runs at night
+          </span>
+          <span class="footer-copy">&copy; 2026 riko</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 10, 15, 0.9);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .nav-logo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--pink);
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+
+  .nav-logo:hover {
+    color: var(--pink);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+    color: var(--muted);
+    transition: all 0.2s ease;
+    padding: 0.35rem 0.7rem;
+    border-radius: 4px;
+  }
+
+  .nav-link:hover {
+    color: var(--text);
+    background: var(--surface);
+    text-shadow: none;
+  }
+
+  .nav-link.active {
+    color: var(--pink);
+    background: rgba(212, 135, 156, 0.08);
+  }
+
+  .main {
+    min-height: calc(100vh - var(--nav-height) - 80px);
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+  }
+
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 0;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .footer-text {
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .footer-copy {
+    font-size: 0.7rem;
+    color: var(--border);
+  }
+
+  @media (max-width: 640px) {
+    .nav-links {
+      gap: 0.15rem;
+    }
+
+    .nav-link {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.5rem;
+    }
+
+    .footer-content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

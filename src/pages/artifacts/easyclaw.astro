@@ -1,0 +1,190 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="EasyClaw // riko.exe" description="one-click installer for OpenClaw.">
+  <section class="detail-page">
+    <nav class="detail-back fade-in">
+      <a href="/artifacts/" class="back-link">&larr; work</a>
+    </nav>
+
+    <header class="detail-header fade-in fade-in-delay-1">
+      <div class="detail-title-row">
+        <h1 class="detail-name">EasyClaw</h1>
+        <span class="detail-price">$9.99</span>
+      </div>
+      <p class="detail-tagline">one-click installer for OpenClaw. no terminal, no config, no headaches.</p>
+    </header>
+
+    <div class="detail-body fade-in fade-in-delay-2">
+      <div class="detail-section">
+        <h2 class="section-label">// what</h2>
+        <p>
+          OpenClaw is powerful. but getting it running shouldn't require a CS degree.
+          EasyClaw wraps the entire setup into a single installer.
+          download. click. done.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <h2 class="section-label">// features</h2>
+        <ul class="feature-list">
+          <li>one-click install &mdash; no terminal commands</li>
+          <li>macOS & Windows support</li>
+          <li>auto-config &mdash; detects your environment</li>
+          <li>built-in health check &mdash; validates everything works</li>
+          <li>auto-update &mdash; stays current without manual patches</li>
+          <li>offline mode &mdash; works without internet after initial setup</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <h2 class="section-label">// stack</h2>
+        <div class="tag-row">
+          <span class="tag">Electron</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Shell</span>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h2 class="section-label">// status</h2>
+        <div class="status-row">
+          <span class="status-badge">coming soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .detail-back {
+    margin-bottom: 2rem;
+  }
+
+  .back-link {
+    font-size: 0.8rem;
+    color: var(--muted);
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover {
+    color: var(--pink);
+  }
+
+  .detail-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .detail-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.75rem;
+  }
+
+  .detail-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--pink);
+    margin-bottom: 0;
+  }
+
+  .detail-price {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--green);
+  }
+
+  .detail-tagline {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+
+  .detail-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .detail-section p {
+    font-size: 0.85rem;
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 0;
+  }
+
+  .section-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.02em;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .feature-list li {
+    font-size: 0.83rem;
+    color: var(--text);
+    padding-left: 1.4rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .feature-list li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.7rem;
+    border-radius: 3px;
+  }
+
+  .status-row {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .status-badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    background: var(--surface);
+    opacity: 0.7;
+  }
+
+  @media (max-width: 640px) {
+    .detail-title-row {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  }
+</style>

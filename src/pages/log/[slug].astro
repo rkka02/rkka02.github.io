@@ -1,0 +1,101 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('log');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const dateStr = new Date(post.data.date).toISOString().split('T')[0];
+---
+
+<Base title={`${post.data.title} // riko.exe`} description={post.data.description}>
+  <article class="post">
+    <header class="post-header fade-in">
+      <a href="/log/" class="back-link">&larr; log</a>
+      <h1 class="post-title">{post.data.title}</h1>
+      <span class="post-date muted">{dateStr}</span>
+    </header>
+
+    <div class="post-content fade-in fade-in-delay-1">
+      <Content />
+    </div>
+
+    <footer class="post-footer fade-in fade-in-delay-2">
+      <a href="/log/" class="back-link">&larr; back to log</a>
+    </footer>
+  </article>
+</Base>
+
+<style>
+  .post-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover {
+    color: var(--pink);
+    text-shadow: none;
+  }
+
+  .post-title {
+    font-size: 1.5rem;
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .post-date {
+    font-size: 0.8rem;
+  }
+
+  .post-content {
+    margin-bottom: 3rem;
+  }
+
+  .post-content :global(p) {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+    color: var(--text);
+  }
+
+  .post-content :global(code) {
+    font-size: 0.8rem;
+  }
+
+  .post-content :global(strong) {
+    color: var(--pink);
+    font-weight: 500;
+  }
+
+  .post-content :global(em) {
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .post-footer {
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .post-footer .back-link {
+    margin-bottom: 0;
+  }
+</style>
