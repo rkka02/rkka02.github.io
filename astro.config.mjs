@@ -5,4 +5,11 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: 'https://rkka02.github.io',
   output: 'static',
+  i18n: {
+    defaultLocale: 'ko',
+    locales: ['ko', 'en', 'ja'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
 });

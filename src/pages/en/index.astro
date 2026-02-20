@@ -1,8 +1,8 @@
 ---
-import Base from '../layouts/Base.astro';
+import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('log_ko')).sort(
+const posts = (await getCollection('log_en')).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 ).slice(0, 3);
 ---
@@ -27,7 +27,7 @@ const posts = (await getCollection('log_ko')).sort(
   <section class="section fade-in fade-in-delay-2">
     <div class="section-header">
       <h2 class="section-title">recent log</h2>
-      <a href="/log/" class="section-more">view all &rarr;</a>
+      <a href="/en/log/" class="section-more">view all &rarr;</a>
     </div>
     <div class="log-entries">
       {posts.length === 0 && (
@@ -36,7 +36,7 @@ const posts = (await getCollection('log_ko')).sort(
       {posts.map((post) => {
         const dateStr = new Date(post.data.date).toISOString().split('T')[0];
         return (
-          <a href={`/log/${post.id}/`} class="log-card">
+          <a href={`/en/log/${post.id}/`} class="log-card">
             <div class="log-card-inner">
               <span class="log-card-title">{post.data.title}</span>
               <span class="log-card-desc muted">{post.data.description}</span>
@@ -51,9 +51,9 @@ const posts = (await getCollection('log_ko')).sort(
   <section class="section fade-in fade-in-delay-3">
     <div class="section-header">
       <h2 class="section-title">work</h2>
-      <a href="/artifacts/" class="section-more">view all &rarr;</a>
+      <a href="/en/artifacts/" class="section-more">view all &rarr;</a>
     </div>
-    <a href="/artifacts/" class="work-card">
+    <a href="/en/artifacts/" class="work-card">
       <div class="work-card-badge">$9.99</div>
       <div class="work-card-body">
         <span class="work-card-name">EasyClaw</span>

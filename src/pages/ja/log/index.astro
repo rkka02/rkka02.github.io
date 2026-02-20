@@ -1,8 +1,8 @@
 ---
-import Base from '../../layouts/Base.astro';
+import Base from '../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('log_ko')).sort(
+const posts = (await getCollection('log_ja')).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 ---
@@ -21,7 +21,7 @@ const posts = (await getCollection('log_ko')).sort(
       {posts.map((post) => {
         const dateStr = new Date(post.data.date).toISOString().split('T')[0];
         return (
-          <a href={`/log/${post.id}/`} class="log-entry">
+          <a href={`/ja/log/${post.id}/`} class="log-entry">
             <div class="log-entry-main">
               <span class="log-entry-title">{post.data.title}</span>
               <span class="log-entry-desc muted">{post.data.description}</span>

@@ -1,4 +1,6 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
 interface Props {
   title?: string;
   description?: string;
@@ -6,17 +8,42 @@ interface Props {
 
 const { title = 'riko.exe', description = 'the code runs at night.' } = Astro.props;
 const currentPath = Astro.url.pathname;
+const currentLocale = Astro.currentLocale ?? 'ko';
 
 const navLinks = [
-  { href: '/about/', label: 'about' },
-  { href: '/log/', label: 'log' },
-  { href: '/artifacts/', label: 'work' },
-  { href: '/gallery/', label: 'gallery' },
+  { path: 'about', label: 'about' },
+  { path: 'log', label: 'log' },
+  { path: 'artifacts', label: 'work' },
+  { path: 'gallery', label: 'gallery' },
+].map((link) => ({
+  href: getRelativeLocaleUrl(currentLocale, link.path),
+  label: link.label,
+}));
+
+const homeHref = getRelativeLocaleUrl(currentLocale, '/');
+
+const locales = [
+  { code: 'ko', label: 'ko' },
+  { code: 'en', label: 'en' },
+  { code: 'ja', label: 'ja' },
 ];
+
+// Build locale switcher URLs: strip current locale prefix, add new one
+function getLocaleUrl(targetLocale: string): string {
+  let path = currentPath;
+  // strip /en/ or /ja/ prefix
+  if (path.startsWith('/en/') || path === '/en') {
+    path = path.replace(/^\/en/, '') || '/';
+  } else if (path.startsWith('/ja/') || path === '/ja') {
+    path = path.replace(/^\/ja/, '') || '/';
+  }
+  if (targetLocale === 'ko') return path;
+  return `/${targetLocale}${path === '/' ? '/' : path}`;
+}
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={currentLocale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -28,16 +55,31 @@ const navLinks = [
   <body>
     <nav class="nav">
       <div class="nav-inner container">
-        <a href="/" class="nav-logo glitch-hover" aria-label="home">=^._.^= ∫</a>
-        <div class="nav-links">
-          {navLinks.map((link) => (
-            <a
-              href={link.href}
-              class:list={['nav-link', 'glitch-hover', { active: currentPath.startsWith(link.href) }]}
-            >
-              {link.label}
-            </a>
-          ))}
+        <a href={homeHref} class="nav-logo glitch-hover" aria-label="home">=^._.^= ∫</a>
+        <div class="nav-right">
+          <div class="nav-links">
+            {navLinks.map((link) => (
+              <a
+                href={link.href}
+                class:list={['nav-link', 'glitch-hover', { active: currentPath.startsWith(link.href) && link.href !== '/' }]}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+          <div class="lang-switch">
+            {locales.map((loc, i) => (
+              <>
+                {i > 0 && <span class="lang-sep">|</span>}
+                <a
+                  href={getLocaleUrl(loc.code)}
+                  class:list={['lang-link', { active: currentLocale === loc.code }]}
+                >
+                  {loc.label}
+                </a>
+              </>
+            ))}
+          </div>
         </div>
       </div>
     </nav>
@@ -96,6 +138,12 @@ const navLinks = [
     color: var(--pink);
   }
 
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
   .nav-links {
     display: flex;
     gap: 0.25rem;
@@ -118,6 +166,35 @@ const navLinks = [
   .nav-link.active {
     color: var(--pink);
     background: rgba(212, 135, 156, 0.08);
+  }
+
+  .lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    border-left: 1px solid var(--border);
+    padding-left: 1rem;
+  }
+
+  .lang-sep {
+    font-size: 0.65rem;
+    color: var(--border);
+  }
+
+  .lang-link {
+    font-size: 0.7rem;
+    color: var(--muted);
+    transition: color 0.2s ease;
+    padding: 0.15rem 0.25rem;
+  }
+
+  .lang-link:hover {
+    color: var(--text);
+    text-shadow: none;
+  }
+
+  .lang-link.active {
+    color: var(--pink);
   }
 
   .main {
@@ -150,6 +227,10 @@ const navLinks = [
   }
 
   @media (max-width: 640px) {
+    .nav-right {
+      gap: 0.5rem;
+    }
+
     .nav-links {
       gap: 0.15rem;
     }
@@ -157,6 +238,14 @@ const navLinks = [
     .nav-link {
       font-size: 0.75rem;
       padding: 0.3rem 0.5rem;
+    }
+
+    .lang-switch {
+      padding-left: 0.5rem;
+    }
+
+    .lang-link {
+      font-size: 0.65rem;
     }
 
     .footer-content {

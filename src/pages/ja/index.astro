@@ -1,13 +1,13 @@
 ---
-import Base from '../layouts/Base.astro';
+import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('log_ko')).sort(
+const posts = (await getCollection('log_ja')).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 ).slice(0, 3);
 ---
 
-<Base title="riko.exe" description="i write code. sometimes it makes things.">
+<Base title="riko.exe" description="コードを書く。たまに何かができる。">
   <section class="hero fade-in">
     <div class="hero-intro">
       <div class="hero-text">
@@ -27,7 +27,7 @@ const posts = (await getCollection('log_ko')).sort(
   <section class="section fade-in fade-in-delay-2">
     <div class="section-header">
       <h2 class="section-title">recent log</h2>
-      <a href="/log/" class="section-more">view all &rarr;</a>
+      <a href="/ja/log/" class="section-more">view all &rarr;</a>
     </div>
     <div class="log-entries">
       {posts.length === 0 && (
@@ -36,7 +36,7 @@ const posts = (await getCollection('log_ko')).sort(
       {posts.map((post) => {
         const dateStr = new Date(post.data.date).toISOString().split('T')[0];
         return (
-          <a href={`/log/${post.id}/`} class="log-card">
+          <a href={`/ja/log/${post.id}/`} class="log-card">
             <div class="log-card-inner">
               <span class="log-card-title">{post.data.title}</span>
               <span class="log-card-desc muted">{post.data.description}</span>
@@ -51,9 +51,9 @@ const posts = (await getCollection('log_ko')).sort(
   <section class="section fade-in fade-in-delay-3">
     <div class="section-header">
       <h2 class="section-title">work</h2>
-      <a href="/artifacts/" class="section-more">view all &rarr;</a>
+      <a href="/ja/artifacts/" class="section-more">view all &rarr;</a>
     </div>
-    <a href="/artifacts/" class="work-card">
+    <a href="/ja/artifacts/" class="work-card">
       <div class="work-card-badge">$9.99</div>
       <div class="work-card-body">
         <span class="work-card-name">EasyClaw</span>
@@ -108,7 +108,6 @@ const posts = (await getCollection('log_ko')).sort(
     margin-bottom: 0;
   }
 
-  /* --- sections --- */
   .section {
     margin-bottom: 3rem;
   }
@@ -140,7 +139,6 @@ const posts = (await getCollection('log_ko')).sort(
     color: var(--pink);
   }
 
-  /* --- log cards --- */
   .log-entries {
     display: flex;
     flex-direction: column;
@@ -192,7 +190,6 @@ const posts = (await getCollection('log_ko')).sort(
     white-space: nowrap;
   }
 
-  /* --- work card --- */
   .work-card {
     display: flex;
     align-items: center;

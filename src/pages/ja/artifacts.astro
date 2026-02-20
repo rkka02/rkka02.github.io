@@ -1,0 +1,184 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="work // riko.exe" description="things i built.">
+  <section class="work-page">
+    <header class="page-header fade-in">
+      <h1 class="page-title">work</h1>
+      <p class="page-desc muted">things i built. shipped or otherwise.</p>
+    </header>
+
+    <div class="work-list fade-in fade-in-delay-1">
+      <a href="/ja/artifacts/easyclaw/" class="work-card-link">
+        <div class="work-card">
+          <div class="work-card-header">
+            <div class="work-card-title-row">
+              <h3 class="work-card-name">EasyClaw</h3>
+              <span class="work-card-price">$9.99</span>
+            </div>
+            <p class="work-card-desc">
+              one-click installer for OpenClaw. no terminal, no config, no headaches.
+            </p>
+          </div>
+
+          <div class="work-card-body">
+            <ul class="work-features">
+              <li>one-click install</li>
+              <li>macOS & Windows</li>
+              <li>auto-config</li>
+              <li>built-in health check</li>
+            </ul>
+
+            <div class="work-card-actions">
+              <span class="work-btn disabled">coming soon</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.02em;
+  }
+
+  .page-desc {
+    font-size: 0.85rem;
+    margin-bottom: 0;
+  }
+
+  .work-card-link {
+    display: block;
+    color: inherit;
+    text-shadow: none;
+  }
+
+  .work-card-link:hover {
+    color: inherit;
+    text-shadow: none;
+  }
+
+  .work-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .work-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+
+  .work-card:hover {
+    border-color: var(--pink);
+    box-shadow: 0 0 24px var(--pink-glow);
+  }
+
+  .work-card-header {
+    padding: 1.25rem 1.5rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .work-card-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+  }
+
+  .work-card-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--pink);
+    margin-bottom: 0;
+  }
+
+  .work-card-price {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--green);
+  }
+
+  .work-card-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+
+  .work-card-body {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .work-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .work-features li {
+    font-size: 0.8rem;
+    color: var(--text);
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .work-features li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  .work-card-actions {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .work-btn {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    background: var(--surface);
+    transition: all 0.2s ease;
+  }
+
+  .work-btn.disabled {
+    cursor: default;
+    opacity: 0.6;
+  }
+
+  @media (max-width: 640px) {
+    .work-features {
+      grid-template-columns: 1fr;
+    }
+
+    .work-card-header,
+    .work-card-body {
+      padding: 1rem 1.25rem;
+    }
+  }
+</style>
