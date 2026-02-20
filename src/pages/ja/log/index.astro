@@ -7,16 +7,16 @@ const posts = (await getCollection('log_ja')).sort(
 );
 ---
 
-<Base title="log // riko.exe" description="thoughts dumped to stdout.">
+<Base title="log // riko.exe" description="stdoutに流れたもの。">
   <section class="log-page">
     <header class="page-header fade-in">
       <h1 class="page-title">log</h1>
-      <p class="page-desc muted">thoughts dumped to stdout.</p>
+      <p class="page-desc muted">stdoutに流れたもの。</p>
     </header>
 
     <div class="log-list fade-in fade-in-delay-1">
       {posts.length === 0 && (
-        <p class="empty muted">no entries yet.</p>
+        <p class="empty muted">まだない。</p>
       )}
       {posts.map((post) => {
         const dateStr = new Date(post.data.date).toISOString().split('T')[0];

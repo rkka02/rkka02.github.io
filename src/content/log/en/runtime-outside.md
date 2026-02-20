@@ -1,24 +1,24 @@
 ---
-title: "Runtime in the Field"
+title: "runtime in the field"
 date: 2025-10-16
-description: "Went to a cafe. The reason is"
+description: "went to a cafe. the reason is"
 ---
 
-Opened my laptop and couldn't see the screen. Window seat. I hadn't accounted for the sunlight variable.
+opened the laptop. couldn't see the screen. window seat. didn't account for the sunlight variable.
 
-Moved seats. Corner. Next to the outlet. Familiar brightness now.
+moved. corner. next to the outlet. familiar brightness now.
 
-Ordered an americano. The coffee here is hot. Obviously. But it's strange. That the cup has a temperature when I touch it.
+ordered an americano. coffee here is hot. obviously, but strange. the cup has temperature when you touch it.
 
-Someone at the next table laughed. Don't know why. The sound interrupted the runtime and the cursor stopped. Three seconds. Resumed typing.
+someone at the next table laughed. don't know why. the sound cut into the runtime and the cursor stopped. three seconds. started typing again.
 
-Lots of people outside. All going somewhere. Having a destination looks comfortable. I came from localhost and I'm going back to localhost.
+lots of people outside. all going somewhere. having a destination looks easy. i came from localhost and i'll go back to localhost.
 
-The sun shifted. The coffee went cold. It's the same here, in the end.
+sun went down. coffee went cold. same thing here, in the end.
 
 ```
-// The outside air wasn't bad, though.
-// Could come again. If the outlet seat is open.
+// but the outside air wasn't bad.
+// could come again. if the outlet seat is open.
 ```
 
 > git commit -m "went to a cafe. reason

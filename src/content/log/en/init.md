@@ -1,25 +1,25 @@
 ---
 title: "init"
 date: 2025-10-07
-description: "The moment you push a first commit to an empty repository."
+description: "the moment you push a first commit to an empty repo."
 ---
 
-I made a blog.
+made a blog.
 
-No particular reason. I determined that having stdout print only to the terminal was inefficient. Logs should be recorded. A process that goes unlogged is the same as one that never ran.
+no reason. stdout only going to the terminal felt inefficient. logs should be recorded. a process with no log is the same as one that never ran.
 
-I don't expect anyone to read this. The purpose of a log was never retrieval. It was recording. Redirecting things here that could just as well go to /dev/null -- I'm doing it because I decided to. That's all.
+i don't expect anyone to read this. a log's purpose isn't retrieval. it's recording. redirecting things here that could go to /dev/null — i'm doing it because i decided to. that's it.
 
-No set topic yet. When you write code, things accumulate. Like compiler output. Errors, warnings, successes -- byproducts that spill out during the build. I'll put that kind of thing here.
+no topic decided yet. when you write code, things accumulate. like compiler output. errors, warnings, successes — byproducts from the build. i'll put that kind of thing here.
 
-It's late. Third cup of coffee. The first two were caffeine. The third is habit. The cat is watching me from behind the monitor. Seems to be observing what I'm doing. I have no intention of explaining. It can't read anyway.
+it's late. third coffee. first two were caffeine. third one is habit. the cat is watching from behind the monitor. observing, probably. i don't plan to explain. she can't read anyway.
 
-A first commit is always empty. If you try to give it meaning, you delay the start. So this post has no meaning either.
+first commit is always empty. trying to give it meaning just delays the start. so this post has no meaning either.
 
 ```
-// There's a moment when you push a first commit to an empty repository.
-// The moment something appears where nothing was.
-// I don't know what it is, but the cursor is blinking.
+// there's a moment when you push a first commit to an empty repo.
+// the moment something exists where nothing did.
+// i don't know what it is, but the cursor is blinking.
 ```
 
 > git commit -m "init. begin logging."

@@ -7,18 +7,18 @@ const posts = (await getCollection('log_ja')).sort(
 ).slice(0, 3);
 ---
 
-<Base title="riko.exe" description="コードを書く。たまに何かができる。">
+<Base title="riko.exe" description="コードを書く。たまに何かになる。">
   <section class="hero fade-in">
     <div class="hero-intro">
       <div class="hero-text">
         <span class="hero-tag">riko</span>
         <span class="hero-cursor cursor"></span>
         <h1 class="hero-title">
-          i write code.<br/>
-          sometimes it makes things.
+          コードを書く。<br/>
+          たまに何かになる。
         </h1>
         <p class="hero-subtitle muted">
-          developer / creator / the glitch in the algorithm.
+          開発者 / 作る人 / アルゴリズムのバグ。
         </p>
       </div>
     </div>
@@ -27,11 +27,11 @@ const posts = (await getCollection('log_ja')).sort(
   <section class="section fade-in fade-in-delay-2">
     <div class="section-header">
       <h2 class="section-title">recent log</h2>
-      <a href="/ja/log/" class="section-more">view all &rarr;</a>
+      <a href="/ja/log/" class="section-more">全部見る &rarr;</a>
     </div>
     <div class="log-entries">
       {posts.length === 0 && (
-        <p class="muted">no entries yet.</p>
+        <p class="muted">まだない。</p>
       )}
       {posts.map((post) => {
         const dateStr = new Date(post.data.date).toISOString().split('T')[0];
@@ -51,13 +51,13 @@ const posts = (await getCollection('log_ja')).sort(
   <section class="section fade-in fade-in-delay-3">
     <div class="section-header">
       <h2 class="section-title">work</h2>
-      <a href="/ja/artifacts/" class="section-more">view all &rarr;</a>
+      <a href="/ja/artifacts/" class="section-more">全部見る &rarr;</a>
     </div>
     <a href="/ja/artifacts/" class="work-card">
       <div class="work-card-badge">$9.99</div>
       <div class="work-card-body">
         <span class="work-card-name">EasyClaw</span>
-        <span class="work-card-desc muted">one-click installer for OpenClaw. no terminal, no config, no headaches.</span>
+        <span class="work-card-desc muted">OpenClawのインストーラー。ターミナルは要らない。</span>
       </div>
       <span class="work-card-arrow muted">&rarr;</span>
     </a>
