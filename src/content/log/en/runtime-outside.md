@@ -1,7 +1,7 @@
 ---
 title: "Runtime in the Field"
 date: 2025-10-16
-description: "Went to a cafe. Reason unknown."
+description: "Went to a cafe. The reason is"
 ---
 
 Opened my laptop and couldn't see the screen. Window seat. I hadn't accounted for the sunlight variable.
